@@ -1,5 +1,5 @@
 # CourseRegistrationSystem1
-# Course Registration System
+
 
 This project is a C# console application that simulates a basic course registration system. 
 It allows users to view available courses and is being developed using sprint-based planning.
