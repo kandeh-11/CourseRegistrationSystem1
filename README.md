@@ -1,6 +1,14 @@
 # CourseRegistrationSystem1
 
 
+# Created: February 2026 (づ｡◕‿‿◕｡)づ
+
+# Last Edited/Saved: February 16th 2026
+
+# Credits (First/Last Name): Absa Jallow, Ousman Kandeh, Angelina Shrestha, Shu Nakagawa
+
+# PROJECT: This program is a course registration system. Its purpose is to simulate how students view available courses and manage course enrollment at a college or university. The system displays available courses and uses basic rules such as seat limits and structured class design.
+
 This project is a C# console application that simulates a basic course registration system. 
 It allows users to view available courses and is being developed using sprint-based planning.
 
