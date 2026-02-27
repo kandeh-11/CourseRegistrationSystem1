@@ -1,9 +1,10 @@
 # CourseRegistrationSystem1
 
 
-# Created: February 2026 (づ｡◕‿‿◕｡)づ
+# Created: February 16th 2026 (づ｡◕‿‿◕｡)づ
 
-# Last Edited/Saved: February 16th 2026
+
+
 
 # Credits (First/Last Name): Absa Jallow, Ousman Kandeh, Angelina Shrestha, Shu Nakagawa
 
