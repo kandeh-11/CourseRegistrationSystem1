@@ -34,7 +34,8 @@ Sprint 2 (March 2 – March 22)
 
 
 What was completed
-Implemented course registration functionality
+Implemented course registration functionality 
+
 Added ability for students to drop courses
 Enforced course seat limits
 Prevented duplicate course registrations
