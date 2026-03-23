@@ -29,3 +29,17 @@ A working program that displays available courses with basic class structure com
 
 ## How to Run
 Open the project in Visual Studio and click the Run button.
+
+Sprint 2 (March 2 – March 22)
+
+
+What was completed
+Implemented course registration functionality
+Added ability for students to drop courses
+Enforced course seat limits
+Prevented duplicate course registrations
+Added feature to view a student’s registered courses
+Improved user interaction with a menu system
+
+Outcome
+A fully interactive program that allows users to view courses, register, drop courses, and manage their schedule with validation rules applied.
