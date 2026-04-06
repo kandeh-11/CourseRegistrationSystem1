@@ -44,3 +44,18 @@ Improved user interaction with a menu system
 
 Outcome
 A fully interactive program that allows users to view courses, register, drop courses, and manage their schedule with validation rules applied.
+
+
+
+Sprint 3 (March 23 – April 5)
+What was completed
+Applied object-oriented programming principles such as encapsulation and abstraction
+Restricted direct access to student course data
+Implemented AddCourse and RemoveCourse methods for safer data handling
+Added validation to ensure course seat limits are valid
+Improved overall code structure and organization
+Added a greeting system for user interaction
+Added a course warning system for full and nearly full courses
+
+Outcome
+A more structured and professional program that follows better programming practices while improving user interaction and system reliability.
