@@ -11,13 +11,19 @@ namespace CourseRegistrationSystem
             // Create a list of courses
             List<Course> courses = new List<Course>
             {
-                new Course("CIS101", "Introduction to Programming", 30),
-                new Course("MATH201", "Calculus I", 25),
-                new Course("ENG150", "English Composition", 20)
+                new Course("CIS101", "Introduction to Programming", 3),
+                new Course("MATH201", "Calculus I", 2),
+                new Course("ENG150", "English Composition", 2),
+                new Course("HIST210", "World History", 1),
+                new Course("BIO110", "General Biology", 2),
+                new Course("PHYS120", "Physics I", 2)
             };
 
             // Create a student
             Student student = new Student("S1", "Ousman");
+
+            // Greeting
+            Console.WriteLine($"Welcome {student.Name}! 👋");
 
             // Menu loop
             while (true)
@@ -28,6 +34,7 @@ namespace CourseRegistrationSystem
                 Console.WriteLine("3. Drop Course");
                 Console.WriteLine("4. View My Courses");
                 Console.WriteLine("5. Exit");
+                
 
                 string choice = Console.ReadLine();
 
@@ -53,16 +60,22 @@ namespace CourseRegistrationSystem
                     }
                     else if (selectedCourse.EnrolledCount >= selectedCourse.MaxSeats)
                     {
-                        Console.WriteLine("Course is full.");
+                        Console.WriteLine($"🚫 {selectedCourse.CourseCode} is FULL!");
                     }
-                    else if (student.RegisteredCourses.Contains(selectedCourse))
+                    else if (!student.AddCourse(selectedCourse))
                     {
                         Console.WriteLine("You are already registered in this course.");
                     }
                     else
                     {
-                        student.RegisteredCourses.Add(selectedCourse);
                         selectedCourse.EnrolledCount++;
+
+                        Console.WriteLine($"You have {selectedCourse.MaxSeats - selectedCourse.EnrolledCount}");
+
+                        if (selectedCourse.MaxSeats - selectedCourse.EnrolledCount == 1)
+                        {
+                            Console.WriteLine($"⚠️ Only 1 seat left in {selectedCourse.CourseCode}!");
+                        }
 
                         Console.WriteLine("Successfully registered!");
                     }
@@ -78,11 +91,9 @@ namespace CourseRegistrationSystem
                     {
                         Console.WriteLine("You are not registered in this course.");
                     }
-                    else
+                    else if (student.RemoveCourse(courseToDrop))
                     {
-                        student.RegisteredCourses.Remove(courseToDrop);
                         courseToDrop.EnrolledCount--;
-
                         Console.WriteLine("Course dropped successfully.");
                     }
                 }
