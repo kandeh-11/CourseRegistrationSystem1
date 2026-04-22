@@ -8,15 +8,19 @@ namespace CourseRegistrationSystem
     {
         static void Main(string[] args)
         {
-            // Create a list of courses
+            // Create a list of courses (UPDATED)
             List<Course> courses = new List<Course>
             {
                 new Course("CIS101", "Introduction to Programming", 3),
+                new Course("CIS202", "Data Structures", 3),
+                new Course("CIS303", "Database Systems", 2),
+                new Course("CIS404", "Software Engineering", 2),
                 new Course("MATH201", "Calculus I", 2),
+                new Course("MATH202", "Calculus II", 2),
                 new Course("ENG150", "English Composition", 2),
-                new Course("HIST210", "World History", 1),
-                new Course("BIO110", "General Biology", 2),
-                new Course("PHYS120", "Physics I", 2)
+                new Course("ENG250", "Advanced Writing", 2),
+                new Course("HIST101", "World History", 3),
+                new Course("BIO110", "Introduction to Biology", 2)
             };
 
             // Create a student
@@ -34,7 +38,7 @@ namespace CourseRegistrationSystem
                 Console.WriteLine("3. Drop Course");
                 Console.WriteLine("4. View My Courses");
                 Console.WriteLine("5. Exit");
-                
+                Console.WriteLine("6. Search Courses");
 
                 string choice = Console.ReadLine();
 
@@ -50,7 +54,13 @@ namespace CourseRegistrationSystem
                 else if (choice == "2")
                 {
                     Console.Write("Enter Course Code: ");
-                    string code = Console.ReadLine();
+                    string code = Console.ReadLine()?.ToUpper();
+
+                    if (string.IsNullOrWhiteSpace(code))
+                    {
+                        Console.WriteLine("Invalid input.");
+                        continue;
+                    }
 
                     Course selectedCourse = courses.Find(c => c.CourseCode == code);
 
@@ -70,8 +80,6 @@ namespace CourseRegistrationSystem
                     {
                         selectedCourse.EnrolledCount++;
 
-                        Console.WriteLine($"You have {selectedCourse.MaxSeats - selectedCourse.EnrolledCount}");
-
                         if (selectedCourse.MaxSeats - selectedCourse.EnrolledCount == 1)
                         {
                             Console.WriteLine($"⚠️ Only 1 seat left in {selectedCourse.CourseCode}!");
@@ -83,7 +91,13 @@ namespace CourseRegistrationSystem
                 else if (choice == "3")
                 {
                     Console.Write("Enter Course Code to drop: ");
-                    string code = Console.ReadLine();
+                    string code = Console.ReadLine()?.ToUpper();
+
+                    if (string.IsNullOrWhiteSpace(code))
+                    {
+                        Console.WriteLine("Invalid input.");
+                        continue;
+                    }
 
                     Course courseToDrop = student.RegisteredCourses.Find(c => c.CourseCode == code);
 
@@ -116,6 +130,35 @@ namespace CourseRegistrationSystem
                 else if (choice == "5")
                 {
                     break;
+                }
+                else if (choice == "6")
+                {
+                    Console.Write("Enter keyword (course code or name): ");
+                    string keyword = Console.ReadLine()?.ToLower();
+
+                    if (string.IsNullOrWhiteSpace(keyword))
+                    {
+                        Console.WriteLine("Invalid input.");
+                        continue;
+                    }
+
+                    List<Course> results = courses.FindAll(c =>
+                        c.CourseCode.ToLower().Contains(keyword) ||
+                        c.CourseName.ToLower().Contains(keyword)
+                    );
+
+                    if (results.Count == 0)
+                    {
+                        Console.WriteLine("No matching courses found.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nSearch Results:\n");
+                        foreach (Course c in results)
+                        {
+                            Console.WriteLine($"{c.CourseCode} - {c.CourseName} ({c.EnrolledCount}/{c.MaxSeats})");
+                        }
+                    }
                 }
             }
         }
